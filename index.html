@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Amparar - Apoio a Mulheres com Câncer de Mama</title>
+    <meta name="description" content="O Projeto Amparar oferece suporte integral a mulheres diagnosticadas com câncer de mama e mulheres em situação de vulnerabilidade social em Mamanguape-PB.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="images/logo_amparar.jpg" alt="Logo Projeto Amparar">
+                    <span>Projeto Amparar</span>
+                    <small>Mamanguape - PB</small>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link active">Início</a></li>
+                    <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
+                    <li><a href="cadastros.html" class="nav-link">Cadastros</a></li>
+                    <li><a href="apoie.html" class="nav-link">Apoie</a></li>
+                    <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+                    <li><a href="#" class="btn btn-primary" onclick="mostrarPix()">💗 Doe PIX</a></li>
+                </ul>
+                
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Apoiando Mulheres com <span class="destaque">Amor e Cuidado</span></h1>
+                        <p>O Projeto Amparar oferece suporte integral a mulheres diagnosticadas com câncer de mama e mulheres em situação de vulnerabilidade social em Mamanguape-PB.</p>
+                        <div class="hero-actions">
+                            <a href="#" class="btn btn-primary" onclick="mostrarPix()">💗 Faça sua Doação</a>
+                            <a href="cadastros.html" class="btn btn-secondary">Preciso de Ajuda</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="Capturadetela2025-09-18165653.png" alt="SOS Casa Rosa - Projeto Amparar">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section class="servicos">
+            <div class="container">
+                <h2 class="text-center">Nossos <span class="destaque">Serviços</span></h2>
+                <div class="servicos-grid">
+                    <div class="servico-card">
+                        <div class="servico-icon">💪</div>
+                        <h3>Fisioterapia</h3>
+                        <p>Reabilitação especializada para recuperação</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">🧠</div>
+                        <h3>Psicologia</h3>
+                        <p>Apoio emocional e psicológico</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">🥗</div>
+                        <h3>Nutrição</h3>
+                        <p>Orientação nutricional personalizada</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">🌿</div>
+                        <h3>Terapia</h3>
+                        <p>Terapias complementares e cuidado integral</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section class="contato">
+            <div class="container">
+                <h2 class="text-center">Entre em <span class="destaque">Contato</span></h2>
+                <div class="contato-grid">
+                    <div class="contato-item">
+                        <div class="contato-icon">📍</div>
+                        <h3>Endereço</h3>
+                        <p>Rua Teresa Soares, nº 09  
+Centro, Mamanguape - PB  
+58280-000</p>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">📞</div>
+                        <h3>Telefone</h3>
+                        <p>(83) 99300-0234</p>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">💌</div>
+                        <h3>Atendimento</h3>
+                        <p>Atendimento personalizado  
+Segunda a Sexta</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>© 2025 Projeto Amparar - Todos os direitos reservados</h3>
+                    <p>CNPJ: 53.549.657/0001-79 | PIX: sos casa rosa</p>
+                </div>
+                <button class="btn btn-outline" onclick="window.location.href='admin.html'">
+                    🔒 Acesso Administrativo
+                </button>
+            </div>
+            <div class="footer-bottom">
+                <p>Desenvolvido com 💗 para apoiar mulheres em Mamanguape-PB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão PIX Fixo -->
+    <a href="#" class="btn-pix-fixo" onclick="mostrarPix()">
+        💗 Doe PIX
+    </a>
+
+    <!-- Modal PIX -->
+    <div id="modalPix" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💗 Doação via PIX</h3>
+                <button class="modal-close" onclick="fecharPix()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pix-info">
+                    <h4>Chave PIX (CNPJ):</h4>
+                    <p class="pix-key">53.549.657/0001-79</p>
+                    <h4>Nome da chave:</h4>
+                    <p class="pix-name">sos casa rosa</p>
+                    <p class="pix-description">Sua doação faz a diferença na vida de mulheres que precisam de apoio. Obrigado por ajudar! 💗</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

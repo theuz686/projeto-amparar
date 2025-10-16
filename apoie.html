@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apoie - Projeto Amparar</title>
+    <meta name="description" content="Apoie o Projeto Amparar através de doações via PIX ou se tornando voluntário. Sua ajuda faz a diferença na vida de mulheres em Mamanguape-PB.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="Projeto-Amparar_1-639x445.jpg" alt="Logo Projeto Amparar">
+                    <span>Projeto Amparar</span>
+                    <small>Mamanguape - PB</small>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
+                    <li><a href="cadastros.html" class="nav-link">Cadastros</a></li>
+                    <li><a href="apoie.html" class="nav-link active">Apoie</a></li>
+                    <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+                    <li><a href="#" class="btn btn-primary" onclick="mostrarPix()">💗 Doe PIX</a></li>
+                </ul>
+                
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="text-center">
+                    <h1>Apoie Nossa <span class="destaque">Causa</span></h1>
+                    <p>Sua contribuição faz a diferença na vida de mulheres que precisam de apoio. Conheça as formas de ajudar o Projeto Amparar.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doações via PIX -->
+        <section class="servicos">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h2>💗 Doações via <span class="destaque">PIX</span></h2>
+                        <p>O PIX é a forma mais rápida e segura de fazer sua doação. Qualquer valor faz a diferença e nos ajuda a continuar oferecendo suporte integral às mulheres atendidas pelo projeto.</p>
+                        
+                        <div class="pix-info" style="background: var(--rosa-suave); padding: 2rem; border-radius: var(--border-radius-lg); margin: 2rem 0;">
+                            <h3>📱 Dados para Doação</h3>
+                            <div style="margin: 1rem 0;">
+                                <strong>Chave PIX (CNPJ):</strong>
+                                <div class="pix-key" style="font-size: 1.5rem; font-weight: 700; color: var(--rosa-principal); margin: 0.5rem 0;">53.549.657/0001-79</div>
+                            </div>
+                            <div style="margin: 1rem 0;">
+                                <strong>Nome da chave:</strong>
+                                <div class="pix-name" style="font-size: 1.25rem; font-weight: 600; color: var(--cinza-texto);">sos casa rosa</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <button class="btn btn-primary" onclick="mostrarPix()">💗 Fazer Doação Agora</button>
+                            <button class="btn btn-secondary" onclick="copiarPix()">📋 Copiar Chave PIX</button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="Capturadetela2025-09-18165653.png" alt="SOS Casa Rosa - Projeto Amparar">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como sua doação ajuda -->
+        <section class="contato">
+            <div class="container">
+                <h2 class="text-center">Como sua Doação <span class="destaque">Ajuda</span></h2>
+                <div class="servicos-grid">
+                    <div class="servico-card">
+                        <div class="servico-icon">🏥</div>
+                        <h3>Tratamentos</h3>
+                        <p>Custeio de sessões de fisioterapia, psicologia e terapias complementares para mulheres em tratamento de câncer de mama.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">🍎</div>
+                        <h3>Alimentação</h3>
+                        <p>Fornecimento de cestas básicas e orientação nutricional para famílias em situação de vulnerabilidade social.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">🏠</div>
+                        <h3>Infraestrutura</h3>
+                        <p>Manutenção da Casa Rosa e aquisição de equipamentos necessários para os atendimentos especializados.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">📚</div>
+                        <h3>Educação</h3>
+                        <p>Campanhas educativas sobre prevenção do câncer de mama e promoção da saúde feminina na comunidade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voluntariado -->
+        <section class="servicos">
+            <div class="container">
+                <h2 class="text-center">Seja um <span class="destaque">Voluntário</span></h2>
+                <p class="text-center mb-4">Além das doações, você pode contribuir com seu tempo e conhecimento. Temos diversas áreas onde voluntários podem fazer a diferença.</p>
+                
+                <div class="servicos-grid">
+                    <div class="servico-card">
+                        <div class="servico-icon">👩‍⚕️</div>
+                        <h3>Área da Saúde</h3>
+                        <p>Fisioterapeutas, psicólogos, nutricionistas e outros profissionais de saúde para atendimento especializado.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">👥</div>
+                        <h3>Assistência Social</h3>
+                        <p>Assistentes sociais para acompanhamento e orientação de famílias em situação de vulnerabilidade.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">💼</div>
+                        <h3>Gestão e Administração</h3>
+                        <p>Profissionais para apoio administrativo, gestão de projetos e organização de atividades.</p>
+                    </div>
+                    <div class="servico-card">
+                        <div class="servico-icon">📢</div>
+                        <h3>Comunicação</h3>
+                        <p>Marketing, comunicação social e design para divulgação do projeto e captação de recursos.</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="cadastros.html" class="btn btn-primary">🙋‍♀️ Quero ser Voluntária</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outras formas de ajudar -->
+        <section class="contato">
+            <div class="container">
+                <h2 class="text-center">Outras Formas de <span class="destaque">Ajudar</span></h2>
+                <div class="contato-grid">
+                    <div class="contato-item">
+                        <div class="contato-icon">📦</div>
+                        <h3>Doações de Materiais</h3>
+                        <p>Equipamentos médicos, materiais de fisioterapia, produtos de higiene e limpeza, roupas e calçados.</p>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">📱</div>
+                        <h3>Divulgação</h3>
+                        <p>Compartilhe nosso trabalho nas redes sociais e ajude a divulgar o projeto para mais pessoas.</p>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">🤝</div>
+                        <h3>Parcerias</h3>
+                        <p>Empresas e organizações interessadas em estabelecer parcerias para apoio contínuo ao projeto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transparência -->
+        <section class="servicos">
+            <div class="container">
+                <h2 class="text-center">Transparência e <span class="destaque">Prestação de Contas</span></h2>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h3>💎 Nosso Compromisso</h3>
+                        <p>O Projeto Amparar tem o compromisso de usar todos os recursos recebidos de forma transparente e responsável. Mantemos registros detalhados de todas as doações e gastos.</p>
+                        
+                        <h4>📊 Relatórios</h4>
+                        <ul style="text-align: left; margin-left: 1rem; color: var(--cinza-medio);">
+                            <li>Relatórios mensais de atividades</li>
+                            <li>Prestação de contas trimestral</li>
+                            <li>Relatório anual de impacto social</li>
+                            <li>Documentação de todos os atendimentos</li>
+                        </ul>
+                        
+                        <h4>🏛️ Informações Legais</h4>
+                        <p><strong>CNPJ:</strong> 53.549.657/0001-79  
+
+                        <strong>Organização:</strong> Sem fins lucrativos  
+
+                        <strong>Localização:</strong> Mamanguape-PB</p>
+                    </div>
+                    <div class="hero-image">
+                        <div class="servico-card" style="margin: 0;">
+                            <div class="servico-icon">📞</div>
+                            <h3>Entre em Contato</h3>
+                            <p><strong>Telefone:</strong>  
+(83) 99300-0234</p>
+                            <p><strong>Endereço:</strong>  
+Rua Teresa Soares, nº 09  
+Centro, Mamanguape - PB</p>
+                            <p><strong>Horário:</strong>  
+Segunda a Sexta  
+8h às 17h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Final -->
+        <section class="contato">
+            <div class="container text-center">
+                <h2>Faça Parte da Nossa <span class="destaque">Rede de Apoio</span></h2>
+                <p class="mb-4">Cada gesto de solidariedade conta. Juntos, podemos oferecer mais esperança e cuidado para quem mais precisa.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="mostrarPix()">💗 Doar Agora</button>
+                    <a href="cadastros.html" class="btn btn-secondary">🙋‍♀️ Ser Voluntária</a>
+                    <a href="tel:+5583993000234" class="btn btn-outline">📞 Falar Conosco</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>© 2025 Projeto Amparar - Todos os direitos reservados</h3>
+                    <p>CNPJ: 53.549.657/0001-79 | PIX: sos casa rosa</p>
+                </div>
+                <button class="btn btn-outline" onclick="window.location.href=\'admin.html\'" >
+                    🔒 Acesso Administrativo
+                </button>
+            </div>
+            <div class="footer-bottom">
+                <p>Desenvolvido com 💗 para apoiar mulheres em Mamanguape-PB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão PIX Fixo -->
+    <a href="#" class="btn-pix-fixo" onclick="mostrarPix()">
+        💗 Doe PIX
+    </a>
+
+    <!-- Modal PIX -->
+    <div id="modalPix" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💗 Doação via PIX</h3>
+                <button class="modal-close" onclick="fecharPix()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pix-info">
+                    <h4>Chave PIX (CNPJ):</h4>
+                    <p class="pix-key">53.549.657/0001-79</p>
+                    <h4>Nome da chave:</h4>
+                    <p class="pix-name">sos casa rosa</p>
+                    <p class="pix-description">Sua doação faz a diferença na vida de mulheres que precisam de apoio. Obrigado por ajudar! 💗</p>
+                    <button class="btn btn-secondary" onclick="copiarPix()" style="margin-top: 1rem;">📋 Copiar Chave PIX</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Função para copiar chave PIX
+        function copiarPix() {
+            const chavePix = '53.549.657/0001-79';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(chavePix).then(() => {
+                    showMessage('Chave PIX copiada com sucesso!', 'success');
+                }).catch(() => {
+                    fallbackCopyPix(chavePix);
+                });
+            } else {
+                fallbackCopyPix(chavePix);
+            }
+        }
+        
+        // Fallback para copiar PIX em navegadores mais antigos
+        function fallbackCopyPix(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showMessage('Chave PIX copiada com sucesso!', 'success');
+            } catch (err) {
+                showMessage('Não foi possível copiar. Chave PIX: 53.549.657/0001-79', 'info');
+            }
+            
+            document.body.removeChild(textArea);
+        }
+        
+        // Exportar função para uso global
+        window.copiarPix = copiarPix;
+    </script>
+</body>
+</html>
