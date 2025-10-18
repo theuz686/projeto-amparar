@@ -91,8 +91,8 @@ p {
 }
 
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 57px;
   border-radius: 0;
   object-fit: cover;
 }
@@ -935,4 +935,49 @@ img {
 @media (max-width: 480px) {
   .col-sm-12 { flex: 0 0 100%; }
   .col-sm-6 { flex: 0 0 50%; }
+}
+/* ---- Layout Texto + Imagem da Home (CORRIGIDO) ---- */
+
+/* Usamos .hero .container porque seu .container está dentro do .hero
+*/
+.hero .container {
+  display: flex; /* A mágica: alinha o texto e a imagem lado a lado */
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: space-between; /* Coloca um em cada ponta */
+  gap: 30px; /* Um espaço entre eles */
+}
+
+/* Usamos a sua classe .hero-content no lugar de .texto */
+.hero-content {
+  flex: 1; /* Faz o texto ocupar metade do espaço */
+}
+
+/* Usamos a sua classe .hero-image no lugar de .imagem */
+.hero-image {
+  flex: 1; /* Faz a imagem ocupar a outra metade */
+  text-align: right; /* Alinha a imagem à direita do seu espaço */
+}
+
+.hero-image img {
+  max-width: 100%; /* Garante que a imagem nunca fique maior que seu container */
+  height: auto; /* Mantém a proporção */
+  border-radius: 8px; /* Borda arredondada (opcional) */
+}
+
+/* --- Ajuste para telas pequenas (Celular) --- */
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column; /* Coloca um em cima do outro */
+    text-align: center; /* Centraliza tudo no celular */
+  }
+
+  .hero-image {
+    text-align: center; /* Centraliza a imagem no celular */
+    margin-top: 20px; /* Espaço entre o texto e a imagem */
+  }
+  
+  .hero-content {
+    /* Garante que o texto também fique centralizado */
+    text-align: center; 
+  }
 }
