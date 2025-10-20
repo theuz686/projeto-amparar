@@ -981,3 +981,85 @@ img {
     text-align: center; 
   }
 }
+/* ================================================= */
+/* 3. RESPONSIVIDADE (MOBILE FIRST E BREAKPOINTS)    */
+/* ================================================= */
+
+/* Regras para Telas Maiores (Desktop - a partir de 993px) */
+/* Geralmente, você define o layout principal aqui (assumindo 3 ou 4 colunas na galeria) */
+.galeria-grid {
+    /* Assumindo que você usa grid ou flexbox para espaçar e alinhar */
+    display: grid; 
+    /* Colunas ajustáveis. Ex: 3 colunas no desktop */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    gap: 30 px; /* ESPAÇAMENTO: 30px entre os itens no desktop */
+    justify-content: center; /* Centraliza a grade */
+}
+
+/* Regras para Tablets (entre 601px e 992px) */
+@media (min-width: 601px) and (max-width: 992px) {
+    
+    /* 1. Reduz o número de colunas na galeria para 2 */
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px; /* Reduz o espaçamento */
+    }
+    
+    /* 2. Adiciona um padding interno no container principal */
+    .container {
+        padding: 0 20px;
+    }
+}
+
+
+/* Regras para Celulares (Até 600px de largura) */
+@media (max-width: 600px) {
+    
+    /* 1. Ajuste do Menu (se necessário) */
+    header .container {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .nav-menu ul {
+        /* Se o menu for grande, reorganize os itens horizontalmente (ou implemente um menu hambúrguer) */
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+        padding: 10px 0;
+    }
+    .nav-menu li {
+        margin: 5px 8px; /* Espaço entre os botões do menu */
+    }
+    .doe-pix-button {
+        margin: 10px 0; /* Separa o botão PIX */
+    }
+
+    /* 2. Galeria: Apenas UM Item por Linha */
+    .galeria-grid {
+        grid-template-columns: 1fr; /* 1 coluna */
+        gap: 20px; /* Espaçamento entre os itens */
+        padding: 0 10px; 
+    }
+
+    /* 3. Itens da Galeria: Ocupa a Largura do Celular */
+    .galeria-item {
+        width: 90vw; /* Ocupa 90% da largura visível */
+        max-width: 350px; 
+        height: auto; /* Permite que a altura se ajuste com o conteúdo */
+        margin: 0 auto; /* Remove a margem extra, o gap já fará o espaçamento */
+    }
+
+    /* 4. Vídeos e Imagens: Ocupam 100% do seu item */
+    .galeria-item img,
+    .galeria-item video {
+        width: 100%;
+        height: auto;
+    }
+    
+    /* 5. Ajuste dos Títulos de Seção */
+    h2 {
+        font-size: 1.5em;
+        text-align: center;
+    }
+}
+
