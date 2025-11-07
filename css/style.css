@@ -508,7 +508,7 @@ p {
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--cinza-medio);
+  border-top: 1px solid var(--cinza-);
   padding-top: 1rem;
   font-size: 0.875rem;
   color: var(--cinza-claro);

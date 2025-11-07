@@ -1,0 +1,434 @@
+/* Definição da Cor Principal */
+:root {
+    --pink-primary: #EE4B8E; /* Tom de rosa baseado na imagem */
+    --pink-light: #fbe5f0;
+    --gray-dark: #353b48; /* Cor do rodapé */
+    --text-primary: #333;
+    --text-secondary: #777;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos de Reset e Estrutura Principal */
+body {
+    font-family: 'Poppins', sans-serif; /* Use uma fonte moderna */
+    background-color: #f7f9fc; /* Fundo levemente cinza para contraste */
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-header {
+    padding: 20px 40px;
+}
+
+.dashboard-header h1 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.main-content {
+    display: flex;
+    gap: 25px;
+    padding: 20px 40px;
+}
+
+.metrics-area {
+    width: 300px; /* Largura fixa para a coluna de métricas */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.graph-area {
+    flex-grow: 1; /* Ocupa o restante do espaço */
+}
+
+/* Estilos dos Cards */
+.card {
+    background: #fff;
+    border-radius: 12px; /* Cantos arredondados suaves */
+    padding: 20px;
+    box-shadow: var(--shadow-light); /* Sombra suave para profundidade */
+    border: 1px solid #eee; /* Borda sutil */
+}
+
+/* Card de Destaque Rosa */
+.summary-card.pink-bg {
+    background: var(--pink-primary);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+/* Card de Métrica Principal */
+.metric-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.metric-card .big-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--pink-primary);
+    margin: 0;
+}
+
+/* Métricas Detalhadas */
+.detailed-metrics {
+    padding: 15px 20px;
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.metric-item:last-child {
+    border-bottom: none;
+}
+
+.metric-value {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Gestão de Inventário */
+.inventory-management h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.inventory-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inventory-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.inventory-item i {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.inventory-item .item-label {
+    flex-grow: 1;
+    color: var(--text-secondary);
+}
+
+.inventory-item .item-count {
+    font-weight: 600;
+}
+
+/* Área do Gráfico (DESTAQUE) */
+.graph-card {
+    padding: 30px;
+    height: 100%; /* Garante que ocupe todo o espaço disponível */
+}
+
+.graph-card h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: var(--text-primary);
+}
+
+#salesChart {
+    max-height: 400px; /* Limite de altura para o gráfico */
+    margin-bottom: 20px;
+}
+
+.graph-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.pink-text {
+    color: var(--pink-primary);
+    font-weight: 700;
+}
+
+/* Botões */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+.btn-details, .btn-report {
+    background-color: #f0f0f0;
+    color: var(--text-primary);
+}
+
+.btn-details:hover, .btn-report:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-volunteers.pink-bg {
+    background-color: var(--pink-primary);
+    color: white;
+}
+
+.btn-volunteers.pink-bg:hover {
+    opacity: 0.9;
+}
+
+
+/* Rodapé */
+.modern-footer {
+    background-color: var(--gray-dark); /* Cor escura original */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+    border-top: 5px solid var(--pink-primary);
+}
+
+.modern-footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.admin-access {
+    background: #fff;
+    color: var(--text-primary);
+    border: none;
+    margin: 10px 0;
+    padding: 10px 25px;
+    border-radius: 50px; /* Botão mais arredondado */
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-access i {
+    margin-right: 8px;
+    color: orange; /* Cor do cadeado */
+}
+
+.developed-by {
+    font-size: 12px;
+    color: #aaa;
+}
+/* Estilos Específicos da Tela de Login */
+
+/* Contêiner principal da tela de login */
+.login-wrapper {
+    display: flex; /* Usa flexbox para centralizar */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    background-color: #f7f9fc; /* Fundo claro para combinar com o dashboard */
+    padding: 20px; /* Adiciona um pouco de padding para telas menores */
+    box-sizing: border-box; /* Inclui padding na largura/altura */
+}
+
+/* Card principal do formulário de login */
+.login-card {
+    background: white; /* Fundo branco para o card */
+    padding: 30px 40px; /* Espaçamento interno */
+    border-radius: 12px; /* Cantos arredondados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidade */
+    width: 100%;
+    max-width: 450px; /* Largura máxima para o card */
+    text-align: center; /* Centraliza o texto dentro do card */
+}
+
+/* Cabeçalho dentro do card de login */
+.login-header h1 {
+    font-size: 28px; /* Tamanho maior para o título */
+    color: var(--text-primary); /* Cor de texto principal */
+    margin-bottom: 5px;
+}
+
+.login-header p {
+    font-size: 14px;
+    color: var(--text-secondary); /* Cor de texto secundária */
+    margin-bottom: 25px;
+}
+
+/* Caixa de destaque "Acesso Restrito" */
+.access-box.pink-bg {
+    background-color: var(--pink-primary); /* Usa a variável de cor rosa principal */
+    color: white; /* Texto branco */
+    padding: 20px;
+    border-radius: 8px; /* Cantos arredondados */
+    margin-bottom: 25px;
+}
+
+.access-box h2 {
+    margin-top: 0;
+    font-size: 22px; /* Tamanho do título "Acesso Restrito" */
+    font-weight: 600;
+}
+
+.access-box p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    opacity: 0.9; /* Levemente transparente */
+}
+
+/* Grupo de formulário (label e input) */
+.form-group {
+    text-align: left; /* Alinha o label e input à esquerda */
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Garante que o label ocupe sua própria linha */
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Campo de input de senha */
+.form-group input[type="password"] {
+    width: 100%; /* Ocupa a largura total do container */
+    padding: 12px;
+    border: 1px solid #ddd; /* Borda suave */
+    border-radius: 8px; /* Cantos arredondados */
+    box-sizing: border-box; /* Inclui padding e borda na largura total */
+    font-size: 16px;
+    transition: border-color 0.3s ease; /* Animação suave da borda */
+}
+
+.form-group input[type="password"]:focus {
+    border-color: var(--pink-primary); /* Borda rosa ao focar */
+    outline: none; /* Remove o outline padrão do navegador */
+}
+
+/* Botão "Entrar" */
+.btn-enter.pink-bg {
+    width: 100%; /* Ocupa a largura total */
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase; /* Texto em maiúsculas */
+    margin-top: 15px;
+    background-color: var(--pink-primary); /* Fundo rosa */
+    color: white; /* Texto branco */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-enter.pink-bg:hover {
+    background-color: #d13a7a; /* Um tom de rosa um pouco mais escuro ao passar o mouse */
+    opacity: 0.95;
+}
+
+/* Mensagem de erro */
+.error-text {
+    color: #e74c3c; /* Vermelho para a mensagem de erro */
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Adiciona ícones no dashboard para refletir o HTML atualizado */
+.total-icon { color: var(--pink-primary); }
+.low-icon { color: #f1c40f; } /* Amarelo para baixo estoque */
+.warn-icon { color: #e67e22; } /* Laranja para alertar */
+
+
+/* Estilos atualizados para os botões do dashboard */
+.action-buttons .btn {
+    background-color: #e0e0e0; /* Cinza claro para os botões secundários */
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-transform: none;
+    transition: background-color 0.2s;
+}
+
+.action-buttons .btn:hover {
+    background-color: #c9c9c9;
+}
+
+.action-buttons .btn:nth-child(3) { /* O terceiro botão ("Ver Voluntárias") */
+    background-color: var(--pink-primary);
+    color: white;
+}
+
+.action-buttons .btn:nth-child(3):hover {
+    background-color: #d13a7a;
+}
+
+/* Melhorias gerais para o dashboard (para garantir consistência) */
+.dashboard-header {
+    padding: 20px 40px;
+    background-color: white; /* Adiciona um fundo branco ao cabeçalho do dashboard */
+    box-shadow: var(--shadow-light); /* Sombra sutil */
+    border-bottom: 1px solid #eee;
+}
+
+.summary-text, .summary-status {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.metric-card .metric-title, .inventory-management .metric-title {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.metric-card .metric-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--pink-primary);
+    margin-bottom: 15px;
+}
+
+.details-list p, .inventory-status p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.details-list p i, .inventory-status p i {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.sales-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.highlight-value {
+    color: var(--pink-primary);
+    font-weight: 700;
+}

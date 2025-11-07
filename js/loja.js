@@ -4,7 +4,7 @@
 
 // CONFIGURAÇÕES
 const NUMERO_WHATSAPP = '5581995277562'; // ALTERE PARA O NÚMERO DA LOJA
-const VALOR_FRETE = 10.00;
+const VALOR_FRETE = 5.00;
 
 // PRODUTOS
 const produtos = [

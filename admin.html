@@ -3,189 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administração - Projeto Amparar</title>
-    <meta name="description" content="Painel administrativo do Projeto Amparar para gestão de cadastros e relatórios.">
-    <link rel="stylesheet" href="css/style.css">
+    <title>Painel Administrativo - Projeto Amparar</title>
+    
+    <link rel="stylesheet" href="css/admin.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <a href="index.html" class="logo">
-                    <img src="images/logo_amparar.jpg" alt="Logo Projeto Amparar">
-                    <span>Projeto Amparar</span>
-                    <small>Mamanguape - PB</small>
-                </a>
+
+    <div id="login-screen" class="login-wrapper">
+        <div class="login-card">
+            <header class="login-header">
+                <h1>Painel Administrativo</h1>
+                <p>Gerencie os cadastros e visualize relatórios do Projeto Amparar.</p>
+            </header>
+
+            <div class="access-box pink-bg">
+                <h2>Acesso Restrito</h2>
+                <p>Insira a senha para acessar o painel administrativo.</p>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
                 
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">Início</a></li>
-                    <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
-                    <li><a href="cadastros.html" class="nav-link">Cadastros</a></li>
-                    <li><a href="apoie.html" class="nav-link">Apoie</a></li>
-                    <li><a href="galeria.html" class="nav-link">Galeria</a></li>
-                    <li><a href="#" class="btn btn-primary" onclick="mostrarPix()">💗 Doe PIX</a></li>
-                </ul>
-                
-                <button class="menu-toggle" id="menuToggle">☰</button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="text-center">
-                    <h1>Painel <span class="destaque">Administrativo</span></h1>
-                    <p>Gerencie os cadastros e visualize relatórios do Projeto Amparar.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Login Administrativo -->
-        <section id="adminLogin" class="servicos">
-            <div class="container">
-                <div class="admin-panel login-panel">
-                    <div class="admin-header">
-                        <h2>Acesso Restrito</h2>
-                        <p>Insira a senha para acessar o painel administrativo.</p>
-                    </div>
-                    <div class="admin-content">
-                        <form id="loginForm">
-                            <div class="form-group">
-                                <label for="adminPassword" class="form-label">Senha:</label>
-                                <input type="password" id="adminPassword" class="form-input" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Entrar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Painel Administrativo (Oculto inicialmente) -->
-        <section id="adminDashboard" class="servicos hidden">
-            <div class="container">
-                <div class="admin-panel">
-                    <div class="admin-header">
-                        <h2 class="admin-title">Dashboard</h2>
-                        <button class="btn btn-outline" id="logoutBtn">Sair</button>
-                    </div>
-                    <div class="admin-content">
-                        <div class="dashboard-stats">
-                            <div class="stat-card">
-                                <h3>Total de Cadastros</h3>
-                                <p id="totalCadastros">0</p>
-                            </div>
-                            <div class="stat-card">
-                                <h3>Amparadas</h3>
-                                <p id="totalAmparadas">0</p>
-                            </div>
-                            <div class="stat-card">
-                                <h3>Acolhidas</h3>
-                                <p id="totalAcolhidas">0</p>
-                            </div>
-                            <div class="stat-card">
-                                <h3>Voluntárias</h3>
-                                <p id="totalVoluntarias">0</p>
-                            </div>
-                        </div>
-
-                        <div class="admin-actions">
-                            <button class="btn btn-secondary" onclick="carregarCadastros(\'amparada\')">Ver Amparadas</button>
-                            <button class="btn btn-secondary" onclick="carregarCadastros(\'acolhida\')">Ver Acolhidas</button>
-                            <button class="btn btn-secondary" onclick="carregarCadastros(\'voluntaria\')">Ver Voluntárias</button>
-                            <button class="btn btn-secondary" onclick="gerarRelatorioAniversariantes()">Relatório Aniversariantes</button>
-                        </div>
-
-                        <div id="listaCadastros" class="lista-cadastros mt-4 hidden">
-                            <h3>Lista de Cadastros</h3>
-                            <div class="table-responsive">
-                                <table class="tabela-admin">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Contato</th>
-                                            <th>Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabelaCadastrosBody">
-                                        <!-- Cadastros serão carregados aqui -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div id="relatorioAniversariantes" class="relatorio-aniversariantes mt-4 hidden">
-                            <h3>Aniversariantes do Mês</h3>
-                            <div class="table-responsive">
-                                <table class="tabela-admin">
-                                    <thead>
-                                        <tr>
-                                            <th>Nome</th>
-                                            <th>Data Nasc.</th>
-                                            <th>Tipo</th>
-                                            <th>Contato</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tabelaAniversariantesBody">
-                                        <!-- Aniversariantes serão carregados aqui -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>© 2025 Projeto Amparar - Todos os direitos reservados</h3>
-                    <p>CNPJ: 53.549.657/0001-79 | PIX: sos casa rosa</p>
-                </div>
-                <button class="btn btn-outline" onclick="window.location.href=\'admin.html\'">
-                    🔒 Acesso Administrativo
-                </button>
-            </div>
-            <div class="footer-bottom">
-                <p>Desenvolvido com 💗 para apoiar mulheres em Mamanguape-PB</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão PIX Fixo -->
-    <a href="#" class="btn-pix-fixo" onclick="mostrarPix()">
-        💗 Doe PIX
-    </a>
-
-    <!-- Modal PIX -->
-    <div id="modalPix" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>💗 Doação via PIX</h3>
-                <button class="modal-close" onclick="fecharPix()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="pix-info">
-                    <h4>Chave PIX (CNPJ):</h4>
-                    <p class="pix-key">53.549.657/0001-79</p>
-                    <h4>Nome da chave:</h4>
-                    <p class="pix-name">sos casa rosa</p>
-                    <p class="pix-description">Sua doação faz a diferença na vida de mulheres que precisam de apoio. Obrigado por ajudar! 💗</p>
-                </div>
-            </div>
+                <button type="submit" class="btn btn-enter pink-bg">Entrar</button>
+                <p id="error-message" class="error-text" style="display:none;">Senha incorreta. Tente novamente.</p>
+            </form>
         </div>
     </div>
+    
+    <div id="dashboard-content" style="display:none;">
+        
+        <main class="dashboard-container">
+            <header class="dashboard-header">
+                <h1>Painel Administrativo</h1>
+                <p>Gerencie os cadastros e visualize relatórios do Projeto Amparar.</p>
+            </header>
 
-    <script src="js/main.js"></script>
-    <script src="js/admin.js"></script>
+            <section class="main-content">
+                <div class="metrics-area">
+                    
+                    <div class="card summary-card pink-bg">
+                        <div class="summary-text">Dashboard</div>
+                        <div class="summary-status">ativo</div>
+                    </div>
+
+                    <div class="card metric-card">
+                        <p class="metric-title">Total de Cadastros</p>
+                        <div class="metric-value">16</div>
+                        <div class="details-list">
+                            <p>Amparadas: 1</p>
+                            <p>Acolhidas: 0</p>
+                            <p>Voluntárias: 2</p>
+                        </div>
+                    </div>
+
+                    <div class="card inventory-management">
+                        <p class="metric-title">Gestão de Inventário</p>
+                        <div class="inventory-status">
+                            <p><i class="fas fa-circle total-icon"></i> Total de Produtos: 2</p>
+                            <p><i class="fas fa-times-circle low-icon"></i> Sem Estoque: 0</p>
+                            <p><i class="fas fa-exclamation-triangle warn-icon"></i> Aguardando Baixos: 0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="graph-area">
+                    <div class="card graph-card">
+                        <h2>Tendência de Vendas</h2>
+                        <canvas id="salesChart"></canvas>
+                        
+                        <p class="sales-summary">
+                            As vendas estão em alta: aumento de <span class="highlight-value">110.2K</span> em relação ao período anterior. Total de vendas <span class="highlight-value">151K</span>.
+                        </p>
+
+                        <div class="action-buttons">
+                            <button class="btn detail-btn">Ver detalhes</button>
+                            <button class="btn detail-btn">Ver detalhes</button>
+                            <button class="btn detail-btn">Ver Voluntárias</button>
+                            <button class="btn detail-btn">Relatório de vendas</button>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="modern-footer">
+            <p>CNPJ: 53.549.657/0001-79 | PIX: sos casa rosa</p>
+            <button class="btn admin-access"><i class="fas fa-lock"></i> Acesso Administrativo</button>
+            <p>Desenvolvido com <i class="fas fa-heart"></i> para apoiar mulheres em Mamanguape-PB</p>
+        </footer>
+        
+    </div> <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/admin.js"></script> 
 </body>
 </html>
