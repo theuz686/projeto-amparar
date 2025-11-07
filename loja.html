@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja - Projeto Amparar</title>
+    <meta name="description" content="Loja do Projeto Amparar - Produtos exclusivos que ajudam a financiar nossos projetos.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loja.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">
+                    <img src="images/logo_amparar.jpg" alt="Logo Projeto Amparar">
+                    <span>Projeto Amparar</span>
+                    <small>Mamanguape - PB</small>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Início</a></li>
+                    <li><a href="sobre.html" class="nav-link">Sobre Nós</a></li>
+                    <li><a href="cadastros.html" class="nav-link">Cadastros</a></li>
+                    <li><a href="loja.html" class="nav-link active">🛍️ Loja</a></li>
+                    <li><a href="apoie.html" class="nav-link">Apoie</a></li>
+                    <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+                    <li><a href="#" class="btn btn-primary" onclick="mostrarPix()">💗 Doe PIX</a></li>
+                </ul>
+                
+                <button class="menu-toggle" id="menuToggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero da Loja -->
+        <section class="hero-loja">
+            <div class="container">
+                <h1>Nossa Loja</h1>
+                <p>Produtos exclusivos que ajudam a financiar nossos projetos de apoio a mulheres com câncer de mama</p>
+            </div>
+        </section>
+
+        <!-- Seção de Produtos -->
+        <section class="loja-section" id="produtosSection">
+            <div class="container">
+                <div class="loja-header">
+                    <h2>Catálogo de Produtos</h2>
+                    <button class="btn btn-cart" id="btnCarrinho" onclick="abrirCarrinho()">
+                        🛒 Carrinho (<span id="cartCount">0</span>)
+                    </button>
+                </div>
+                <div id="produtosList" class="produtos-grid">
+                    <!-- Produtos carregados via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção do Carrinho -->
+        <section class="loja-section" id="carrinhoSection" style="display: none;">
+            <div class="container">
+                <div class="carrinho-header">
+                    <button class="btn btn-voltar" onclick="voltarProdutos()">← Voltar</button>
+                    <h2>Carrinho de Compras</h2>
+                </div>
+
+                <div id="carrinhoVazio" class="carrinho-vazio">
+                    <p>Seu carrinho está vazio</p>
+                </div>
+
+                <div id="carrinhoConteudo" class="carrinho-conteudo" style="display: none;">
+                    <table class="tabela-carrinho">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Subtotal</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carrinhoItens">
+                        </tbody>
+                    </table>
+
+                    <div class="carrinho-resumo">
+                        <div class="resumo-linha">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span>Frete:</span>
+                            <span id="frete">R$ 10,00</span>
+                        </div>
+                        <div class="resumo-linha total">
+                            <span>Total:</span>
+                            <span id="total">R$ 0,00</span>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-checkout" onclick="irCheckout()">
+                        Ir para Checkout
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Checkout -->
+        <section class="loja-section" id="checkoutSection" style="display: none;">
+            <div class="container">
+                <div class="checkout-header">
+                    <button class="btn btn-voltar" onclick="voltarCarrinho()">← Voltar</button>
+                    <h2>Checkout</h2>
+                </div>
+
+                <div class="checkout-container">
+                    <!-- Resumo do Pedido -->
+                    <div class="checkout-resumo">
+                        <h3>Resumo do Pedido</h3>
+                        <div id="resumoPedido" class="resumo-pedido">
+                        </div>
+                    </div>
+
+                    <!-- Formulário -->
+                    <form id="formCheckout" class="checkout-form">
+                        <div class="form-secao">
+                            <h3>Dados Pessoais</h3>
+                            <div class="form-grupo">
+                                <label>Nome Completo *</label>
+                                <input type="text" id="nome" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Email *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label>Telefone/WhatsApp *</label>
+                                <input type="tel" id="telefone" placeholder="(83) 99999-9999" required>
+                            </div>
+                        </div>
+
+                        <div class="form-secao">
+                            <h3>Endereço de Entrega</h3>
+                            <div class="form-grupo">
+                                <label>Endereço *</label>
+                                <input type="text" id="endereco" required>
+                            </div>
+                            <div class="form-linha">
+                                <div class="form-grupo">
+                                    <label>Número *</label>
+                                    <input type="text" id="numero" required>
+                                </div>
+                                <div class="form-grupo">
+                                    <label>Complemento</label>
+                                    <input type="text" id="complemento">
+                                </div>
+                            </div>
+                            <div class="form-linha">
+                                <div class="form-grupo">
+                                    <label>Bairro *</label>
+                                    <input type="text" id="bairro" required>
+                                </div>
+                                <div class="form-grupo">
+                                    <label>Cidade *</label>
+                                    <input type="text" id="cidade" required>
+                                </div>
+                            </div>
+                            <div class="form-linha">
+                                <div class="form-grupo">
+                                    <label>Estado *</label>
+                                    <input type="text" id="estado" placeholder="PB" required>
+                                </div>
+                                <div class="form-grupo">
+                                    <label>CEP *</label>
+                                    <input type="text" id="cep" placeholder="00000-000" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-secao">
+                            <h3>Forma de Pagamento</h3>
+                            <div class="opcoes-pagamento">
+                                <label class="opcao-pagamento">
+                                    <input type="radio" name="pagamento" value="dinheiro" required>
+                                    <span>💵 Dinheiro na Entrega (Gerar Nota Fiscal)</span>
+                                </label>
+                                <label class="opcao-pagamento">
+                                    <input type="radio" name="pagamento" value="pix" required>
+                                    <span>📱 Pix</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-acoes">
+                            <button type="button" class="btn btn-secondary" onclick="voltarCarrinho()">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Finalizar Pedido</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>© 2025 Projeto Amparar - Todos os direitos reservados</h3>
+                    <p>CNPJ: 53.549.657/0001-79 | PIX: sos casa rosa</p>
+                </div>
+                <button class="btn btn-outline" onclick="window.location.href='admin.html'">
+                    🔒 Acesso Administrativo
+                </button>
+            </div>
+            <div class="footer-bottom">
+                <p>Desenvolvido com 💗 para apoiar mulheres em Mamanguape-PB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão PIX Fixo -->
+    <a href="#" class="btn-pix-fixo" onclick="mostrarPix()">
+        💗 Doe PIX
+    </a>
+
+    <!-- Modal PIX -->
+    <div id="modalPix" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💗 Doação via PIX</h3>
+                <button class="modal-close" onclick="fecharPix()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="pix-info">
+                    <h4>Chave PIX (CNPJ):</h4>
+                    <p class="pix-key">53.549.657/0001-79</p>
+                    <h4>Nome da chave:</h4>
+                    <p class="pix-name">sos casa rosa</p>
+                    <p class="pix-description">Sua doação faz a diferença na vida de mulheres que precisam de apoio. Obrigado por ajudar! 💗</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso -->
+    <div id="modalSucesso" class="modal hidden">
+        <div class="modal-content">
+            <h2>✅ Pedido Realizado com Sucesso!</h2>
+            <p id="mensagemSucesso"></p>
+            <div class="modal-acoes">
+                <button id="btnBaixarNota" class="btn btn-primary" style="display: none;" onclick="gerarNotaFiscal()">
+                    📄 Baixar Nota Fiscal
+                </button>
+                <button class="btn btn-success" onclick="enviarWhatsApp()">
+                    💬 Enviar para WhatsApp
+                </button>
+                <button class="btn btn-secondary" onclick="novosProdutos()">
+                    Fazer Novo Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/loja.js"></script>
+</body>
+</html>
