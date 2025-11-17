@@ -19,8 +19,8 @@ if (!isset($conn) || $conn->connect_error) {
 $termo_busca = isset($_GET['busca']) ? trim($_GET['busca']) : '';
 
 // 1. Define a consulta SQL base, selecionando todas as colunas relevantes
-$sql = "SELECT id, nome, data_nascimento, email, telefone, cpf, rg, endereco, numero_sid, laudo_medico_obrigatorio, caminho_laudo 
-        FROM amparadas";
+$sql = "SELECT id, nome, data_nascimento, email, telefone, cpf, rg, endereco, numero_sid, descricao_necessidades 
+        FROM acolhidas";
 
 $tipos = "";
 $parametros = [];
@@ -46,7 +46,7 @@ $stmt = $conn->prepare($sql);
 
 // TRATAMENTO DE ERRO na preparação
 if ($stmt === false) {
-    error_log("Erro na preparação da consulta: " . $conn->error);
+    error_log("Erro na preparação da consulta (acolhidas): " . $conn->error);
     die("❌ Erro interno do sistema. Consulte os logs.");
 }
 
@@ -58,9 +58,8 @@ if (!empty($parametros)) {
 
 // 5. Executa a consulta
 if (!$stmt->execute()) {
-    // Loga o erro exato no servidor, mas exibe uma mensagem genérica para o usuário
-    error_log("Erro na execução SQL (listar_amparadas): " . $stmt->error);
-    die("❌ Erro ao buscar dados. Tente novamente.");
+    error_log("Erro na execução SQL (acolhidas): " . $stmt->error);
+    die("❌ Erro ao buscar dados de Acolhidas. Tente novamente.");
 }
 
 // 6. Obtém o resultado da consulta
@@ -75,7 +74,7 @@ $resultado = $stmt->get_result();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Amparadas</title>
+    <title>Lista de Acolhidas</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; background-color: #f8f8f8; }
         .container { max-width: 1400px; margin: 30px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
@@ -103,15 +102,34 @@ $resultado = $stmt->get_result();
             transition: background-color 0.3s;
         }
         .search-form button:hover { background-color: #0056b3; }
+        
+        /* Estilos adicionais para os botões de Ação */
+        .action-button { 
+            background: #28a745; 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            border-radius: 3px; 
+            cursor: pointer; 
+            display: block; 
+            margin-bottom: 5px; 
+            text-align: center; 
+            text-decoration: none; 
+            font-size: 12px;
+        }
+        .action-button.delete { 
+            background: #dc3545; 
+        }
+        .action-button:hover {
+            opacity: 0.9;
+        }
+        
         .voltar-link { margin-top: 20px; display: block; }
-        /* Estilo para botões de ação */
-        .action-button { background: #28a745; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; display: block; margin-bottom: 5px; text-align: center; text-decoration: none; }
-        .action-button.delete { background: #dc3545; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Lista de Pessoas Amparadas Cadastradas</h2>
+        <h2>Lista de Pessoas Acolhidas Cadastradas</h2>
         
         <form method="GET" class="search-form">
             <input 
@@ -121,7 +139,7 @@ $resultado = $stmt->get_result();
                 value="<?php echo htmlspecialchars($termo_busca); ?>"
             >
             <button type="submit">🔍 Buscar</button>
-            <button type="button" class="action-button" onclick="window.location.href='listar_amparadas.php'" style="background-color: #6c757d;">Limpar Filtro</button>
+            <button type="button" class="action-button" onclick="window.location.href='listar_acolhidas.php'" style="background-color: #6c757d; display: inline-block;">Limpar Filtro</button>
         </form>
 
         <?php if ($resultado->num_rows > 0): ?>
@@ -137,7 +155,7 @@ $resultado = $stmt->get_result();
                         <th>CPF</th>
                         <th>RG</th>
                         <th>Endereço</th>
-                        <th>Laudo</th>
+                        <th>Necessidades</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -153,28 +171,16 @@ $resultado = $stmt->get_result();
                             <td><?= htmlspecialchars($linha['cpf']) ?></td>
                             <td><?= htmlspecialchars($linha['rg']) ?></td>
                             <td><?= htmlspecialchars($linha['endereco']) ?></td>
+                            <td><?= htmlspecialchars($linha['descricao_necessidades']) ?></td>
+                            
                             <td>
-                                <?php if ($linha['caminho_laudo']): ?>
-                                    <a 
-                                        href="<?= htmlspecialchars($linha['caminho_laudo']) ?>" 
-                                        target="_blank" 
-                                        title="Visualizar Laudo"
-                                        style="color: #ff69b4; text-decoration: underline;"
-                                    >
-                                        📎 Ver Laudo
-                                    </a>
-                                <?php else: ?>
-                                    N/A
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <a href="editar_amparada.php?id=<?= $linha['id'] ?>" class="action-button">
+                                <a href="editar_acolhida.php?id=<?= $linha['id'] ?>" class="action-button">
                                     Editar
                                 </a>
                                 
                                 <form method="POST" action="processa_exclusao.php" style="display:inline;" onsubmit="return confirm('ATENÇÃO: Tem certeza que deseja excluir o registro de <?= htmlspecialchars($linha['nome']) ?>? Esta ação é irreversível.');">
                                     <input type="hidden" name="id" value="<?= $linha['id'] ?>">
-                                    <input type="hidden" name="tabela" value="amparadas">
+                                    <input type="hidden" name="tabela" value="acolhidas">
                                     <button type="submit" class="action-button delete">Excluir</button>
                                 </form>
                             </td>
@@ -183,7 +189,7 @@ $resultado = $stmt->get_result();
                 </tbody>
             </table>
         <?php else: ?>
-            <p>Nenhuma pessoa amparada encontrada no banco de dados <?php echo !empty($termo_busca) ? "para o termo '" . htmlspecialchars($termo_busca) . "'" : ""; ?>.</p>
+            <p>Nenhuma pessoa acolhida encontrada no banco de dados <?php echo !empty($termo_busca) ? "para o termo '" . htmlspecialchars($termo_busca) . "'" : ""; ?>.</p>
         <?php endif; ?>
 
         <a href="cadastros.html" class="voltar-link">Voltar para a Página de Cadastros</a>
