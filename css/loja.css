@@ -70,7 +70,7 @@
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.1);
+    box-shadow: 0 4px 15px rgba(50, 30, 233, 0.1);
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
